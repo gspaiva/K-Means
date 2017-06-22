@@ -1,0 +1,42 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class FileDataReader {
+	
+	private String fileName;
+	
+	public FileDataReader(String name )
+	{
+		this.fileName = name;
+	}
+	public List<Point> retrivePointsFromDataSet(){
+		List<Point> points = new ArrayList<Point>();
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(this.fileName));
+			try {
+				while(reader.ready()){
+					String line = reader.readLine();
+					List<Double> coordinates = new ArrayList<Double>();
+					coordinates.add(Double.valueOf(line.split(",")[0]));
+					coordinates.add(Double.valueOf(line.split(",")[1]));
+					coordinates.add(Double.valueOf(line.split(",")[2]));
+					coordinates.add(Double.valueOf(line.split(",")[3]));
+					Point p = new Point(coordinates);
+					points.add(p);	
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return points;
+	}
+}
