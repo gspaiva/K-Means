@@ -26,6 +26,7 @@ public class FileDataReader {
 					coordinates.add(Double.valueOf(line.split(",")[2]));
 					coordinates.add(Double.valueOf(line.split(",")[3]));
 					Point p = new Point(coordinates);
+					p.setDescription(line.split(",")[4]);
 					points.add(p);	
 				}
 			} catch (IOException e) {

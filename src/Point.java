@@ -5,6 +5,7 @@ import java.util.Random;
 public class Point {
 	
 	public List<Double> coordinates;
+	private String description;
 	
 	public Point(List c){
 		
@@ -12,6 +13,14 @@ public class Point {
 			
 	}
 	
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public static double calcEuclidianDistance(Point p1, Point p2, int numberCoordinates){
 		
 		double sum = 0 ;
@@ -83,6 +92,32 @@ public class Point {
 		}
 		return new Point(coordinates);
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((coordinates == null) ? 0 : coordinates.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Point other = (Point) obj;
+		if (coordinates == null) {
+			if (other.coordinates != null)
+				return false;
+		} else if (!coordinates.equals(other.coordinates))
+			return false;
+		return true;
+	}
+	
 	
 	
 	
