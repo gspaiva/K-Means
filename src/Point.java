@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Point {
 	
@@ -21,5 +23,67 @@ public class Point {
 		return distance;
 		
 	}
+	public static Point randomCentroid(List<Point> dataset, int numberCoordinates){
+		
+		Random random = new Random();
+		double min = Point.minCoordinate(dataset, numberCoordinates);
+		double max = Point.maxCoordinate(dataset, numberCoordinates);;
+		
+		List<Double> coordinates = new ArrayList<>();
+		for(int i = 0 ; i < numberCoordinates; i++){
+			coordinates.add(min + (max - min) * random.nextDouble());
+		}
+		
+		
+		return new Point(coordinates);
+	}
+	public static double maxCoordinate(List<Point> dataset, int numberCoordinates){
+		int datasetSize = dataset.size();
+		double maxValue = -500000.00;
+		for(int i = 0 ; i < datasetSize; i++){
+			Point current = dataset.get(i);
+			for(int j = 0 ; j< numberCoordinates; j++){
+				if(current.coordinates.get(j) > maxValue){
+					maxValue = current.coordinates.get(j);
+				}
+			}
+		}
+		return maxValue;
+	}
+	public static double minCoordinate(List<Point> dataset, int numberCoordinates){
+		int datasetSize = dataset.size();
+		double minValue = 500000.00;
+		for(int i = 0 ; i < datasetSize; i++){
+			Point current = dataset.get(i);
+			for(int j = 0 ; j< numberCoordinates; j++){
+				if(current.coordinates.get(j) < minValue){
+					minValue = current.coordinates.get(j);
+				}
+			}
+		}
+		return minValue;
+	}
+	public static Point meanPoint(List<Point> points, int numberCoordinates){
+		int pointsSize = points.size();
+		List<Double> coordinates = new ArrayList<Double>();
+		//initialize 
+		for(int k = 0 ; k < numberCoordinates; k++){
+			coordinates.add(0.00);
+		}
+		
+		for(int i = 0; i < pointsSize; i++){
+			double value = 0;
+			for(int j = 0 ; j < numberCoordinates; j++){
+				 coordinates.set(j,coordinates.get(j)+ points.get(i).coordinates.get(j));
+			}
+		}
+		
+		for(int j = 0 ; j < numberCoordinates; j++){
+			coordinates.set(j,coordinates.get(j) / pointsSize );
+		}
+		return new Point(coordinates);
+	}
+	
+	
 	
 }
