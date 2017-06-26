@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class Point {
 
+
     public List<Double> coordinates;
     private String description;
 
@@ -117,7 +118,6 @@ public class Point {
             return false;
         return true;
     }
-
 
 
 

@@ -3,6 +3,7 @@ import java.util.List;
 
 public class Cluster {
 
+
     private Point point;
     private List<Point> pointsOfGroup;
 
@@ -19,10 +20,11 @@ public class Cluster {
         this.point = point;
     }
 
-    public void addPointToCluster(Point p){
+    public void addPointToCluster(Point p) {
         this.pointsOfGroup.add(p);
     }
-    public List<Point> getPointsOfGroup(){
+
+    public List<Point> getPointsOfGroup() {
         return this.pointsOfGroup;
     }
 
@@ -56,7 +58,5 @@ public class Cluster {
             return false;
         return true;
     }
-
-
 
 }

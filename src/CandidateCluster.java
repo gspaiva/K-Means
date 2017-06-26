@@ -1,6 +1,7 @@
 
 public class CandidateCluster {
 
+
     private Cluster c;
     private double dist;
     private Point p;

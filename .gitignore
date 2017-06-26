@@ -1,3 +1,10 @@
+<<<<<<< HEAD
 .idea/*
 Agrupamento.iml
 out/*
+=======
+.settings
+.classpath
+.project
+bin/
+>>>>>>> c1b6128573cbd8008df9b3220eea25d98ce406c0

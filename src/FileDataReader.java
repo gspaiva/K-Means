@@ -7,6 +7,7 @@ import java.util.List;
 
 public class FileDataReader {
 
+
     private String fileName;
 
     public FileDataReader(String name )
@@ -40,4 +41,6 @@ public class FileDataReader {
 
         return points;
     }
+
+
 }
