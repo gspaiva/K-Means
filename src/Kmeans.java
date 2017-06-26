@@ -36,7 +36,7 @@ public class Kmeans {
         // begin the clustering
         int cont = 0;
         int clusterSize = clusters.size();
-        while (cont < 500) {
+        while (cont < 1000) {
 
             //clear clusters
 
@@ -74,10 +74,10 @@ public class Kmeans {
                 Cluster cAux = clusters.get(j);
                 cAux.setPoint(Point.meanPoint(c.getPointsOfGroup(), NUMBER_OF_COORDINATES));
 
-                if (c.getPoint().equals(cAux.getPoint())) {
+                if(Point.calcEuclidianDistance(c.getPoint(),cAux.getPoint(),NUMBER_OF_COORDINATES) == 0 ){
                     cont++;
                 }
-
+                
                 c.setPoint(Point.meanPoint(c.getPointsOfGroup(), NUMBER_OF_COORDINATES));
             }
 
