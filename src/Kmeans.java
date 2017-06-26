@@ -22,7 +22,7 @@ public class Kmeans {
 
         //number of coordinates
         final int NUMBER_OF_COORDINATES = 4;
-
+        final int NUMBER_MAX_ITERATIONS = 500;
 
         //Kmeans algorithm
 
@@ -36,7 +36,7 @@ public class Kmeans {
         // begin the clustering
         int cont = 0;
         int clusterSize = clusters.size();
-        while (cont < 1000) {
+        while (cont < NUMBER_MAX_ITERATIONS) {
 
             //clear clusters
 
@@ -44,7 +44,6 @@ public class Kmeans {
 
                 clusters.get(i).clearPointsOfGroup();
             }
-
 
             for (int i = 0; i < points.size(); i++) {
                 Point p = points.get(i);
@@ -59,9 +58,7 @@ public class Kmeans {
                     }
 
                 }
-
                 int indexOfCluster = clusters.indexOf(candidate.getC());
-
                 clusters.get(indexOfCluster).addPointToCluster(p);
 
             }
@@ -77,7 +74,7 @@ public class Kmeans {
                 if(Point.calcEuclidianDistance(c.getPoint(),cAux.getPoint(),NUMBER_OF_COORDINATES) == 0 ){
                     cont++;
                 }
-                
+
                 c.setPoint(Point.meanPoint(c.getPointsOfGroup(), NUMBER_OF_COORDINATES));
             }
 
@@ -100,8 +97,6 @@ public class Kmeans {
             else {
                 System.out.println("Grupo vazio!");
             }
-
-
 
         }
 
