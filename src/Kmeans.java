@@ -32,8 +32,16 @@ public class Kmeans {
 
         // begin the clustering
         int cont = 0;
-
+        int clusterSize = clusters.size();
         while (cont < 500) {
+
+            //clear clusters
+
+            for(int i = 0; i< clusterSize ; i++){
+
+                clusters.get(i).clearPointsOfGroup();
+            }
+
 
             for (int i = 0; i < points.size(); i++) {
                 Point p = points.get(i);
@@ -51,16 +59,18 @@ public class Kmeans {
 
                 int indexOfCluster = clusters.indexOf(candidate.getC());
 
-                if (!clusters.get(indexOfCluster).getPointsOfGroup().contains(p))
-                    clusters.get(indexOfCluster).addPointToCluster(p);
+                clusters.get(indexOfCluster).addPointToCluster(p);
+
             }
 
             //now we have to calculate the new centroids
 
             for (int j = 0; j < numberOfClusters; j++) {
                 Cluster c = clusters.get(j);
+
                 Cluster cAux = clusters.get(j);
                 cAux.setPoint(Point.meanPoint(c.getPointsOfGroup(), 4));
+
                 if (c.getPoint().equals(cAux.getPoint())) {
                     cont++;
                 }
@@ -71,9 +81,12 @@ public class Kmeans {
         }
 
 
+        System.out.println("---------- total points ----- : " + points.size());
         for (int i = 0; i < numberOfClusters; i++) {
             System.out.println("------------------------" + "CLUSTER (" + i + ")------------------------");
             System.out.println(clusters.get(i).getPoint().coordinates.toString());
+            System.out.println(clusters.get(i).getPointsOfGroup().size());
+
             System.out.println("---------------------------------------------------------------------------");
             for (int j = 0; j < clusters.get(i).getPointsOfGroup().size(); j++) {
 
@@ -83,7 +96,8 @@ public class Kmeans {
         }
 
 
-        //System.out.println(Point.meanPoint(points,4).coordinates.toString());
+
+
 
 
     }

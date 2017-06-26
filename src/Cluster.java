@@ -27,6 +27,9 @@ public class Cluster {
     public List<Point> getPointsOfGroup() {
         return this.pointsOfGroup;
     }
+    public void clearPointsOfGroup(){
+        this.pointsOfGroup.clear();
+    }
 
     @Override
     public int hashCode() {
