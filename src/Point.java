@@ -38,7 +38,6 @@ public class Point {
         Random random = new Random();
         double min = Point.minCoordinate(dataset, numberCoordinates);
         double max = Point.maxCoordinate(dataset, numberCoordinates);;
-
         List<Double> coordinates = new ArrayList<>();
         for(int i = 0 ; i < numberCoordinates; i++){
             coordinates.add(min + (max - min) * random.nextDouble());
@@ -49,13 +48,13 @@ public class Point {
     }
     public static double maxCoordinate(List<Point> dataset, int numberCoordinates){
         int datasetSize = dataset.size();
-        double maxValue = 0;
+        double maxValue = dataset.get(0).coordinates.get(0); // first coordinate from first point
         for(int i = 0 ; i < datasetSize; i++){
             Point current = dataset.get(i);
-            maxValue = current.coordinates.get(0);
-            for(int j = 1 ; j< numberCoordinates; j++){
+            for(int j = 0 ; j< numberCoordinates; j++){
                 if(current.coordinates.get(j) > maxValue){
                     maxValue = current.coordinates.get(j);
+
                 }
             }
         }
@@ -63,10 +62,9 @@ public class Point {
     }
     public static double minCoordinate(List<Point> dataset, int numberCoordinates){
         int datasetSize = dataset.size();
-        double minValue = 0;
+        double minValue = dataset.get(0).coordinates.get(0); // first coordinate from first point
         for(int i = 0 ; i < datasetSize; i++){
             Point current = dataset.get(i);
-            minValue = current.coordinates.get(0);
             for(int j = 0 ; j< numberCoordinates; j++){
                 if(current.coordinates.get(j) < minValue){
                     minValue = current.coordinates.get(j);

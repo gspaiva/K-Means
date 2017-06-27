@@ -14,7 +14,7 @@ public class FileDataReader {
     {
         this.fileName = name;
     }
-    public List<Point> retrivePointsFromDataSet(){
+    public List<Point> retrievePointsFromDataSet(){
         List<Point> points = new ArrayList<Point>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(this.fileName));
