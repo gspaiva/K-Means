@@ -49,10 +49,11 @@ public class Point {
     }
     public static double maxCoordinate(List<Point> dataset, int numberCoordinates){
         int datasetSize = dataset.size();
-        double maxValue = -500000.00;
+        double maxValue = 0;
         for(int i = 0 ; i < datasetSize; i++){
             Point current = dataset.get(i);
-            for(int j = 0 ; j< numberCoordinates; j++){
+            maxValue = current.coordinates.get(0);
+            for(int j = 1 ; j< numberCoordinates; j++){
                 if(current.coordinates.get(j) > maxValue){
                     maxValue = current.coordinates.get(j);
                 }
@@ -62,9 +63,10 @@ public class Point {
     }
     public static double minCoordinate(List<Point> dataset, int numberCoordinates){
         int datasetSize = dataset.size();
-        double minValue = 500000.00;
+        double minValue = 0;
         for(int i = 0 ; i < datasetSize; i++){
             Point current = dataset.get(i);
+            minValue = current.coordinates.get(0);
             for(int j = 0 ; j< numberCoordinates; j++){
                 if(current.coordinates.get(j) < minValue){
                     minValue = current.coordinates.get(j);

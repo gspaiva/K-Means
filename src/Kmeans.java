@@ -17,6 +17,7 @@ public class Kmeans {
         //list of clusters
         List<Cluster> clusters = new ArrayList<Cluster>();
         //number of clusters
+        System.out.print("Enter the number of clusters : ");
         Scanner sc = new Scanner(System.in);
         int numberOfClusters = sc.nextInt();
 
@@ -27,11 +28,14 @@ public class Kmeans {
         //Kmeans algorithm
 
         // here we random the initial centroids
+
         for (int i = 0; i < numberOfClusters; i++) {
             Cluster cluster = new Cluster(Point.randomCentroid(points, NUMBER_OF_COORDINATES));
             clusters.add(cluster);
             System.out.println(cluster.getPoint().coordinates.toString());
         }
+
+
 
         // begin the clustering
         int cont = 0;
