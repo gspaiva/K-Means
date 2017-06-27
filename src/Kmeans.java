@@ -34,9 +34,6 @@ public class Kmeans {
             clusters.add(cluster);
             System.out.println(cluster.getPoint().coordinates.toString());
         }
-
-
-
         // begin the clustering
         int cont = 0;
         int clusterSize = clusters.size();
@@ -99,7 +96,7 @@ public class Kmeans {
                 }
             }
             else {
-                System.out.println("Grupo vazio!");
+                System.out.println("Empty cluster!");
             }
 
         }
